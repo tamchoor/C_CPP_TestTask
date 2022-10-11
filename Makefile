@@ -23,16 +23,16 @@ CROSS = \033[9m
 MARK = \033[7m
 RESET = \033[0m
 
-.PHONY: all clean fclean re bonus clno
+.PHONY: all clean fclean re
 
 all: $(NAME_CL) $(NAME_SERV) 
 
 ALL_OBJS_DIR = $(DIR_SRC)
 
-$(NAME_SERV): $(OBJS_S)
-	@$(CC) $(FLAGS) $(INCLUDES)  $(LIBRARIES) $(OBJS_S) -o $(NAME_SERV)
-# clang++ -Wall -I/Users/anastasiadementeva/Desktop/boost_1_80_0 -std=c++14 -lpthread server.cpp -o titan -L/Users/anastasiadementeva/Desktop/boost_1_80_0/stage/lib -lboost_system -lboost_thread  -lboost_thread -lboost_filesystem -lboost_log_setup -lboost_log
-	@echo "\n$(MARK) $(NAME_SERV): $(GREEN)object files were created$(RESET)"
+$(NAME_SERV):
+# @$(CC) $(FLAGS) $(INCLUDES)  $(LIBRARIES) $(OBJS_S) -o $(NAME_SERV)
+	clang++ -Wall -I/Users/anastasiadementeva/Desktop/boost_1_80_0 -std=c++14 -lpthread server.cpp -o $(NAME_SERV) -L/Users/anastasiadementeva/Desktop/boost_1_80_0/stage/lib -lboost_system -lboost_thread  -lboost_thread -lboost_filesystem -lboost_log_setup -lboost_log
+# @echo "\n$(MARK) $(NAME_SERV): $(GREEN)object files were created$(RESET)"
 	@echo "$(MARK) $(NAME_SERV): $(GREEN)$(NAME_SERV) was created$(RESET)"
 
 $(NAME_CL): $(OBJS_C) 
@@ -45,11 +45,7 @@ $(OBJS_C)%.o : %.c
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(OBJS_S)%.o : %.c
-	$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES)  -c $< -o $@
-
-# $(LIBFT): $(LIBFT_DIRECTORY)/*.c $(LIBFT_DIRECTORY)/*.h
-# 	@echo "$(NAME): $(GREEN)Creating $(LIBFT)...$(RESET)"
-# 	@$(MAKE) -sC $(LIBFT_DIRECTORY)
+	$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) -I/Users/$(USER)/Desktop/boost_1_80_0 -c $< -o $@
 
 clean:
 	@rm -rf $(OBJS)
