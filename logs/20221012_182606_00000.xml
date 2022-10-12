@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<log>
+	<record id="0" timestamp="2022-Oct-12 18:26:06.174088">XML log record 0</record>
+	<record id="1" timestamp="2022-Oct-12 18:26:06.175320">XML log record 1</record>
+	<record id="2" timestamp="2022-Oct-12 18:26:06.175390">Special XML characters: &amp;, &lt;, &gt;, &quot;, &apos;</record>
+</log>

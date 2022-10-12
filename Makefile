@@ -9,9 +9,8 @@ FLAGS = -Wall -Werror -Wextra
 LIBRARIES =  -lpthread -L/Users/$(USER)/Desktop/boost_1_80_0/stage/lib -lboost_system -lboost_thread  -lboost_thread -lboost_filesystem -lboost_log_setup -lboost_log
 INCLUDES = -I/Users/$(USER)/Desktop/boost_1_80_0
 
-SOURCES_SERV =  server.c 
-SOURCES_CL =  client.c 
-
+SOURCES_SERV =  server.cpp 
+SOURCES_CL =  client.cpp 
 
 OBJS_S = $(SOURCES_SERV:%.c=%.o)
 OBJS_C = $(SOURCES_CL:%.c=%.o)
@@ -29,7 +28,7 @@ all: $(NAME_CL) $(NAME_SERV)
 
 ALL_OBJS_DIR = $(DIR_SRC)
 
-$(NAME_SERV):
+$(NAME_SERV): $(SOURCES_SERV) 
 # @$(CC) $(FLAGS) $(INCLUDES)  $(LIBRARIES) $(OBJS_S) -o $(NAME_SERV)
 	clang++ -Wall -I/Users/anastasiadementeva/Desktop/boost_1_80_0 -std=c++14 -lpthread server.cpp -o $(NAME_SERV) -L/Users/anastasiadementeva/Desktop/boost_1_80_0/stage/lib -lboost_system -lboost_thread  -lboost_thread -lboost_filesystem -lboost_log_setup -lboost_log
 # @echo "\n$(MARK) $(NAME_SERV): $(GREEN)object files were created$(RESET)"
