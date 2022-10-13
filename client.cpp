@@ -30,7 +30,7 @@ int main()
 		std::cin.getline(message, maxLen);
 		if(strlen(message) > 0)
 		{
-			send(sock, message, strlen(message), 0);
+			send(sock, message, strlen(message) + 1, 0);
 			if (strcmp(message, "STOP") == 0)
 				break ;
 		}

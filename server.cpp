@@ -1,56 +1,17 @@
-// #include <sys/types.h>
-// #include <sys/socket.h>
-// #include <iostream>
-
-// #include <netinet/in.h>
-// #include <libc.h>
-
-// #include <boost/smart_ptr/shared_ptr.hpp>
-// #include <boost/lambda/lambda.hpp>
-// #include <boost/date_time/posix_time/posix_time.hpp>
-
-// #include <boost/log/common.hpp>
-// #include <boost/log/expressions.hpp>
-// #include <boost/log/attributes.hpp>
-// #include <boost/log/sinks.hpp>
-// #include <boost/log/sources/logger.hpp>
-
 #include "server.hpp"
-
-// namespace logging = boost::log;
-// namespace attrs = boost::log::attributes;
-// namespace src = boost::log::sources;
-// namespace sinks = boost::log::sinks;
-// namespace expr = boost::log::expressions;
-// namespace keywords = boost::log::keywords;
-// namespace bll = boost::lambda;
-
-// typedef sinks::synchronous_sink< sinks::text_file_backend > file_sink;
 
 void init_file_collecting(boost::shared_ptr< file_sink > sink)
 {
     sink->locked_backend()->set_file_collector(sinks::file::make_collector(
-        keywords::target = "logs",                      /*< the target directory >*/
-        keywords::max_size = 16 * 1024 * 1024,          /*< maximum total size of the stored files, in bytes >*/
-        keywords::min_free_space = 100 * 1024 * 1024,   /*< minimum free space on the drive, in bytes >*/
-        keywords::max_files = 512                       /*< maximum number of stored files >*/
+        keywords::target = "logs",                      
+        keywords::max_size = 16 * 1024 * 1024,         
+        keywords::min_free_space = 100 * 1024 * 1024,  
+        keywords::max_files = 512                      
     ));
 }
 
-// #define START		1
-// #define STOP		2
-
-// struct Client
-// {
-// 	int sock;
-// 	int registrFlag = 0;
-// 	char message[1024];
-// 	int bytes_read;
-// };
-
 int	isThisStartMess(char *message)
 {
-	std::cout << message << "= message\n";
 	if (strcmp(message, "START") == 0)
 		return 0;
 	return 1;
@@ -113,7 +74,7 @@ void init_logging()
     logging::core::get()->add_sink(sink);
 }
 
-int main()
+int main(int argc, char **argv, char **env)
 {
 	int			listener;
 	struct		sockaddr_in addr;
@@ -152,12 +113,10 @@ int main()
 		client.bytes_read = recv(client.sock, client.message, 1024, 0);
 		if (client.bytes_read > 0)
 		{
-			std::cout <<" bytes = " << client.bytes_read;
 			client.message[client.bytes_read] = '\0';
 			checkClientMessage(&client, lg);
 		}
 	}
-	std::cout << "STOP and close\n";
 	close(client.sock);
 	return 0;
 }

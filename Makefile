@@ -12,8 +12,8 @@ INCLUDES = -I/Users/$(USER)/Desktop/boost_1_80_0
 SOURCES_SERV =  server.cpp 
 SOURCES_CL =  client.cpp 
 
-OBJS_S = $(SOURCES_SERV:%.c=%.o)
-OBJS_C = $(SOURCES_CL:%.c=%.o)
+OBJS_S = $(SOURCES_SERV:%.cpp=%.o)
+OBJS_C = $(SOURCES_CL:%.cpp=%.o)
 OBJS = $(OBJS_C) $(OBJS_S)
 
 GREEN = \033[0;32m
@@ -28,9 +28,9 @@ all: $(NAME_CL) $(NAME_SERV)
 
 ALL_OBJS_DIR = $(DIR_SRC)
 
-$(NAME_SERV): $(SOURCES_SERV) 
+$(NAME_SERV):
 # @$(CC) $(FLAGS) $(INCLUDES)  $(LIBRARIES) $(OBJS_S) -o $(NAME_SERV)
-	clang++ -Wall -I/Users/anastasiadementeva/Desktop/boost_1_80_0 -std=c++14 -lpthread server.cpp -o $(NAME_SERV) -L/Users/anastasiadementeva/Desktop/boost_1_80_0/stage/lib -lboost_system -lboost_thread  -lboost_thread -lboost_filesystem -lboost_log_setup -lboost_log
+	$(CC) -I/Users/anastasiadementeva/Desktop/boost_1_80_0 -std=c++14 -lpthread server.cpp -o $(NAME_SERV) -L/Users/anastasiadementeva/Desktop/boost_1_80_0/stage/lib -lboost_system -lboost_thread  -lboost_thread -lboost_filesystem -lboost_log_setup -lboost_log
 # @echo "\n$(MARK) $(NAME_SERV): $(GREEN)object files were created$(RESET)"
 	@echo "$(MARK) $(NAME_SERV): $(GREEN)$(NAME_SERV) was created$(RESET)"
 
@@ -40,14 +40,14 @@ $(NAME_CL): $(OBJS_C)
 	@echo "$(MARK) $(NAME_CL): $(GREEN)$(NAME_CL) was created$(RESET)"
 
 
-$(OBJS_C)%.o : %.c
+$(OBJS_C)%.o : %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(OBJS_S)%.o : %.c
-	$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) -I/Users/$(USER)/Desktop/boost_1_80_0 -c $< -o $@
+# $(OBJS_S)%.o : %.cpp
+# 	$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) -I/Users/$(USER)/Desktop/boost_1_80_0 -c $< -o $@
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf *.o
 	@echo "$(NAME): $(RED) $(CROSS)object $(RED) files were deleted$(RESET)"
 
 fclean: clean
