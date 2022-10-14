@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<log>
+	<record id="0" timestamp="2022-Oct-14 13:52:38.898566">warning: interaction protocol violation :dhbc</record>
+	<record id="1" timestamp="2022-Oct-14 13:52:39.674921">warning: interaction protocol violation :ehvc</record>
+	<record id="2" timestamp="2022-Oct-14 13:52:41.431509">client registration</record>
+	<record id="3" timestamp="2022-Oct-14 13:52:42.450857">gggg</record>
+</log>

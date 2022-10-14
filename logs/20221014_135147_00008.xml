@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<log>
+	<record id="0" timestamp="2022-Oct-14 13:51:47.141359">warning: interaction protocol violation :hhd</record>
+	<record id="1" timestamp="2022-Oct-14 13:51:48.053976">warning: interaction protocol violation :hfh</record>
+	<record id="2" timestamp="2022-Oct-14 13:51:48.932223">warning: interaction protocol violation :fhhf</record>
+	<record id="3" timestamp="2022-Oct-14 13:51:50.975535">client registration</record>
+	<record id="4" timestamp="2022-Oct-14 13:51:52.314267">gggggg</record>
+	<record id="5" timestamp="2022-Oct-14 13:51:54.197220">bbvvvvvvvvvvvvv</record>
+</log>

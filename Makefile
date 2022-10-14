@@ -3,11 +3,11 @@ NAME_CL = client
 
 CC = clang++ -std=c++14
 # FLAGS = -Wall -Werror -Wextra -g
-# FLAGS = -Wall -Werror -Wextra -g -fsanitize=address
-FLAGS = -Wall -Werror -Wextra 
+FLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+# FLAGS = -Wall -Werror -Wextra 
 
-LIBRARIES =  -lpthread -L/Users/$(USER)/Desktop/boost_1_80_0/stage/lib -lboost_system -lboost_thread  -lboost_thread -lboost_filesystem -lboost_log_setup -lboost_log
-INCLUDES = -I/Users/$(USER)/Desktop/boost_1_80_0
+# LIBRARIES =  -lpthread -L/Users/$(USER)/Desktop/boost_1_80_0/stage/lib -lboost_system -lboost_thread  -lboost_thread -lboost_filesystem -lboost_log_setup -lboost_log
+# INCLUDES = -I/Users/$(USER)/Desktop/boost_1_80_0
 
 SOURCES_SERV =  server.cpp 
 SOURCES_CL =  client.cpp 
